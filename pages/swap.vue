@@ -3,9 +3,7 @@
     class="grid grid-cols-3 gap-4 h-screen dark:bg-vuesax-grey dark:text-white"
   >
     <div class="col-span-3">
-      <div class="container mx-auto hidden md:block">
-        <BarnerOne title="Stake and Unstake assets" />
-      </div>
+      <div class="container mx-auto"><SwapTable /></div>
     </div>
   </div>
 </template>

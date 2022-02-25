@@ -49,7 +49,7 @@
           </div>
           <div v-for="item in items" :key="item">
             <div v-bind:class="{ hidden: activePoolAction !== item }">
-              <div v-if="item === `unstake`">
+              <div v-if="item === POOLACTION.UNSTAKE">
                 Staked Value: {{ dialogOne ? stakedAssetValue : 0 }}
               </div>
 
@@ -90,7 +90,9 @@
                       approve
                     </vs-button>
                   </div>
-                  <div v-bind:class="{ 'col-span-2': item == 'unstake' }">
+                  <div
+                    v-bind:class="{ 'col-span-2': item == POOLACTION.UNSTAKE }"
+                  >
                     <vs-button
                       upload
                       block
@@ -378,92 +380,3 @@ export default class PoolDialog extends mixins(Web3Mixin) {
   }
 }
 </script>
-
-<style>
-.center button {
-  background-color: black;
-  color: white;
-}
-.con-footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
-}
-
-.not-margin {
-  margin: 0px;
-  font-weight: normal;
-  padding: 10px;
-  padding-bottom: 0px;
-}
-.con-form {
-  width: 100%;
-}
-.con-footer .vs-button .vs-button__content {
-  padding: 10px 10px;
-}
-.con-form .flex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.con-form .flex a {
-  font-size: 0.8rem;
-  opacity: 0.7;
-}
-.con-form .flex a:hover {
-  opacity: 1;
-}
-.con-form .vs-checkbox-label {
-  font-size: 0.8rem;
-}
-.con-form .vs-input-content {
-  margin: 10px 0px;
-  width: calc(100%);
-}
-.con-form .vs-input-content .vs-input {
-  width: 100%;
-}
-.footer-dialog {
-  display: flex;
-  flex-direction: column;
-  width: calc(100%);
-}
-.footer-dialog .new {
-  margin: 0px;
-  margin-top: 20px;
-  padding: 0px;
-  font-size: 0.7rem;
-}
-.footer-dialog .new a {
-  color: rgba(var(--vs-primary), 1) !important;
-  margin-left: 6px;
-}
-.footer-dialog .new a:hover {
-  text-decoration: underline;
-}
-.footer-dialog .vs-button {
-  margin: 0px;
-}
-.con-content p {
-  font-size: 0.8rem;
-  padding: 0px 10px;
-}
-.con-content .vs-checkbox-label {
-  font-size: 0.8rem;
-}
-.con-content .vs-input-parent {
-  width: 100%;
-}
-.con-content .vs-input-content {
-  margin: 10px 0px;
-  width: calc(100%);
-}
-.con-content .vs-input-content .vs-input {
-  width: 100%;
-}
-[role='tab'].active {
-  @apply text-black border-b-black dark:text-white dark:border-b-white;
-}
-</style>
