@@ -412,7 +412,8 @@ export const WETH_CONTRACT: { [chainId: number]: ContractSetup } = {
 export const ASSETS: Array<Asset> = [
   {
     id: 1,
-    name: 'WETH',
+    name: 'Wrapped ethereum',
+    symbol: 'WETH',
     logo: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=017',
     website: 'https://ethereum.org',
     pool: 20,
@@ -420,7 +421,8 @@ export const ASSETS: Array<Asset> = [
   },
   {
     id: 2,
-    name: 'DAI',
+    name: 'Dai',
+    symbol: 'DAI',
     logo:
       'https://cryptologos.cc/logos/multi-collateral-dai-dai-logo.svg?v=017',
     website: 'dai.com',
@@ -429,7 +431,8 @@ export const ASSETS: Array<Asset> = [
   },
   {
     id: 3,
-    name: 'DEG',
+    name: 'Demigod token',
+    symbol: 'DEG',
     logo:
       'https://cryptologos.cc/logos/raiden-network-token-rdn-logo.svg?v=017',
     website: 'evanseburu32@gmail.com',

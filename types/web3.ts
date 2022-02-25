@@ -6,6 +6,7 @@ export interface ContractSetup {
 export interface Asset {
   id: number;
   name: string;
+  symbol: string;
   logo: string;
   website: string;
   pool: number;

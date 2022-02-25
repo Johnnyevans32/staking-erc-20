@@ -18,6 +18,7 @@
           >
             Tokens
           </vs-th>
+          <vs-th> Symbols </vs-th>
           <vs-th> Img </vs-th>
           <vs-th
             sort
@@ -38,13 +39,19 @@
             {{ tr.name }}
           </vs-td>
           <vs-td>
+            {{ tr.symbol }}
+          </vs-td>
+          <vs-td>
             <img width="15" :src="`${tr.logo}`" />
           </vs-td>
           <vs-td>
             {{ tr.pool }}
           </vs-td>
           <vs-td>
-            <PoolDialog :assetAddressKey="tr.assetAddressKey" :name="tr.name" />
+            <PoolDialog
+              :assetAddressKey="tr.assetAddressKey"
+              :name="tr.symbol"
+            />
           </vs-td>
         </vs-tr>
       </template>
