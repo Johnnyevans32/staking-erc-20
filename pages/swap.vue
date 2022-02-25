@@ -6,18 +6,13 @@
       <div class="container mx-auto hidden md:block">
         <BarnerOne title="Stake and Unstake assets" />
       </div>
-      <div class="container mx-auto">
-        <PoolDashboard />
-      </div>
-      <div class="container mx-auto"><AssetTable /></div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import BarnerOne from '~/components/BarnerOne.vue';
-import AssetTable from '~/components/assets/AssetTable.vue';
-import PoolDashboard from '~/components/tokenpool/PoolDashboard.vue';
+import SwapTable from '~/components/swap/SwapTable.vue';
 import { Component, mixins } from 'nuxt-property-decorator';
 
 import Web3Mixin from '~/mixins/web3';
@@ -25,9 +20,8 @@ import Web3Mixin from '~/mixins/web3';
 @Component({
   components: {
     BarnerOne,
-    AssetTable,
-    PoolDashboard
+    SwapTable
   }
 })
-export default class HomePage extends mixins(Web3Mixin) {}
+export default class SwapPage extends mixins(Web3Mixin) {}
 </script>

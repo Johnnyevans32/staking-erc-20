@@ -6,9 +6,12 @@
       icon
       animation-type="scale"
       size="mini"
-      @click="isConnected ? (dialogOne = !dialogOne) : (dialogOne = !dialogOne)"
+      @click="
+        isConnected
+          ? (dialogOne = !dialogOne)
+          : openNotification('danger', `connect your wallet`)
+      "
     >
-      <!-- openNotification('danger', `connect your wallet`) -->
       action
       <template #animate>
         <i class="bx bxs-paper-plane"></i>
@@ -81,6 +84,7 @@
                       block
                       v-if="item == POOLACTION.STAKE"
                       class="web3-button"
+                      :disabled="assetApprovedState"
                       @click="approvePoolStake()"
                     >
                       approve
@@ -155,16 +159,15 @@ export default class PoolDialog extends mixins(Web3Mixin) {
   errorMsg: string = '';
   tokenBalance: number = 0;
   stakedAssetValue: any = '0';
+  assetApprovedState: boolean = false;
+
+  POOLACTION: typeof POOLACTION = POOLACTION;
 
   activePoolAction = POOLACTION.STAKE;
 
   items = [POOLACTION.STAKE, POOLACTION.UNSTAKE];
 
-  switchDialogTab(tab: string) {
-    this.activePoolAction = tab;
-  }
-
-  @Prop({ required: true, type: String }) readonly addressName!: string;
+  @Prop({ required: true, type: String }) readonly assetAddressKey!: string;
   @Prop({ required: true, type: String }) readonly name!: string;
 
   get stakeAmountFieldValid() {
@@ -178,7 +181,7 @@ export default class PoolDialog extends mixins(Web3Mixin) {
       return null;
     }
     this.refreshAction;
-    const assetAddress = this.getAssetAddress(this.addressName);
+    const assetAddress = this.getAssetAddress(this.assetAddressKey);
 
     const tokenBalance = await this.erc20Service.getErcTokenBalance(
       assetAddress,
@@ -195,6 +198,39 @@ export default class PoolDialog extends mixins(Web3Mixin) {
     );
   }
 
+  @AsyncComputed()
+  async getStakedAssetValue() {
+    if (!this.isConnected) {
+      this.stakedAssetValue = '0';
+      return null;
+    }
+    this.refreshAction;
+    try {
+      const assetAddress = this.getAssetAddress(this.assetAddressKey);
+
+      const stakedAssetValue = Number(
+        this.formatTokenBal(
+          await this.poolService.getStakedBalance(
+            this.account,
+            this.chainId,
+            this.getWeb3Provider,
+            assetAddress
+          )
+        )
+      );
+
+      this.stakedAssetValue = UtilsModule.nFormatter(stakedAssetValue, 1);
+
+      console.log({
+        stakedAssetValue: this.stakedAssetValue,
+        name: this.assetAddressKey
+      });
+    } catch (err) {
+      console.log({ err });
+      this.stakedAssetValue = '0';
+    }
+  }
+
   @Watch('stakeAmount')
   stakeAmountValidation(newVal: number) {
     this.$emit('my-custom-event');
@@ -203,6 +239,10 @@ export default class PoolDialog extends mixins(Web3Mixin) {
       : newVal > this.tokenBalance && this.activePoolAction === POOLACTION.STAKE
       ? (this.errorMsg = 'amount is more than you can stake')
       : (this.errorMsg = '');
+  }
+
+  switchDialogTab(tab: string) {
+    this.activePoolAction = tab;
   }
 
   setMaxAsStakeAmount() {
@@ -247,39 +287,6 @@ export default class PoolDialog extends mixins(Web3Mixin) {
     }
   }
 
-  @AsyncComputed()
-  async getStakedAssetValue() {
-    if (!this.isConnected) {
-      this.stakedAssetValue = '0';
-      return null;
-    }
-    this.refreshAction;
-    try {
-      const assetAddress = this.getAssetAddress(this.addressName);
-
-      const stakedAssetValue = Number(
-        this.formatTokenBal(
-          await this.poolService.getStakedBalance(
-            this.account,
-            this.chainId,
-            this.getWeb3Provider,
-            assetAddress
-          )
-        )
-      );
-
-      this.stakedAssetValue = UtilsModule.nFormatter(stakedAssetValue, 1);
-
-      console.log({
-        stakedAssetValue: this.stakedAssetValue,
-        name: this.addressName
-      });
-    } catch (err) {
-      console.log({ err });
-      this.stakedAssetValue = '0';
-    }
-  }
-
   async approvePoolStake() {
     const loading = this.$vs.loading({
       text: 'sending approval request...',
@@ -292,13 +299,14 @@ export default class PoolDialog extends mixins(Web3Mixin) {
         this.chainId,
         this.signer as unknown as Signer
       );
-      const erc20AssetAddress = this.getAssetAddress(this.addressName);
+      const erc20AssetAddress = this.getAssetAddress(this.assetAddressKey);
       await this.erc20Service.approveErcTxn(
         erc20AssetAddress,
         this.signer,
         amountInWei,
         tokenFarmContract.address
       );
+      this.assetApprovedState = true;
       this.openNotification('success', 'token transfer approved');
     } catch (err) {
       const errReason = UtilsModule.getRevertedReason(err);
@@ -315,9 +323,14 @@ export default class PoolDialog extends mixins(Web3Mixin) {
       type: 'square'
     });
     try {
+      if (!this.assetApprovedState) {
+        throw new Error(
+          'please approve token transfer authorization before proceeding'
+        );
+      }
       const amountInWei = UtilsModule.parseEtherValue(this.stakeAmount);
 
-      const erc20AssetAddress = this.getAssetAddress(this.addressName);
+      const erc20AssetAddress = this.getAssetAddress(this.assetAddressKey);
 
       await this.poolService.stakeAsset(
         this.chainId,
@@ -331,6 +344,7 @@ export default class PoolDialog extends mixins(Web3Mixin) {
       const errReason = UtilsModule.getRevertedReason(err);
       this.openNotification('danger', errReason);
     } finally {
+      this.assetApprovedState = false;
       this.updateRefreshAction();
       loading.close();
     }
@@ -344,7 +358,7 @@ export default class PoolDialog extends mixins(Web3Mixin) {
     });
     try {
       const amountInWei = UtilsModule.parseEtherValue(this.stakeAmount);
-      const assetAddress = this.getAssetAddress(this.addressName);
+      const assetAddress = this.getAssetAddress(this.assetAddressKey);
 
       await this.poolService.unstakeAsset(
         this.chainId,

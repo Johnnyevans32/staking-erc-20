@@ -9,5 +9,5 @@ export interface Asset {
   logo: string;
   website: string;
   pool: number;
-  addressName?: string;
+  assetAddressKey?: string;
 }

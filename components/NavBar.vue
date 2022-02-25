@@ -109,12 +109,18 @@
           {{ shortenedAddress }}
         </span>
       </template>
-      <!-- <vs-sidebar-item>
-        <template #icon>
+      <vs-sidebar-item to="/">
+        <!-- <template #icon>
           <i class="bx bx-home"></i>
-        </template>
-        NFT
-      </vs-sidebar-item> -->
+        </template> -->
+        stake assets
+      </vs-sidebar-item>
+      <vs-sidebar-item to="/swap">
+        <!-- <template #icon>
+          <i class="bx bx-home"></i>
+        </template> -->
+        swap
+      </vs-sidebar-item>
 
       <template #footer>
         <vs-row justify="space-between">

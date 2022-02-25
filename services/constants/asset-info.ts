@@ -416,7 +416,7 @@ export const ASSETS: Array<Asset> = [
     logo: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=017',
     website: 'https://ethereum.org',
     pool: 20,
-    addressName: 'wethTokenAddress'
+    assetAddressKey: 'wethTokenAddress'
   },
   {
     id: 2,
@@ -425,7 +425,7 @@ export const ASSETS: Array<Asset> = [
       'https://cryptologos.cc/logos/multi-collateral-dai-dai-logo.svg?v=017',
     website: 'dai.com',
     pool: 20,
-    addressName: 'fauTokenAddress'
+    assetAddressKey: 'fauTokenAddress'
   },
   {
     id: 3,
@@ -434,7 +434,7 @@ export const ASSETS: Array<Asset> = [
       'https://cryptologos.cc/logos/raiden-network-token-rdn-logo.svg?v=017',
     website: 'evanseburu32@gmail.com',
     pool: 20,
-    addressName: 'degTokenAddress'
+    assetAddressKey: 'degTokenAddress'
   }
 ];
 

@@ -44,7 +44,7 @@
             {{ tr.pool }}
           </vs-td>
           <vs-td>
-            <PoolDialog :addressName="tr.addressName" :name="tr.name" />
+            <PoolDialog :assetAddressKey="tr.assetAddressKey" :name="tr.name" />
           </vs-td>
         </vs-tr>
       </template>

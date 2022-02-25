@@ -142,8 +142,8 @@ class Web3Mixin extends Vue {
     // Format the DAI for displaying to the user
     return ethers.utils.formatUnits(tokenBalance, 18);
   }
-  getAssetAddress(addressName: string): string {
-    return this[addressName] || constants.AddressZero;
+  getAssetAddress(assetAddressKey: string): string {
+    return this[assetAddressKey] || constants.AddressZero;
   }
 }
 

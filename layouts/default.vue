@@ -1,14 +1,26 @@
 <template>
-  <div>
-    <Nuxt />
+  <div :class="appTheme">
+    <NavBar />
+    <div id="padding-scroll-content">
+      <Nuxt />
+    </div>
+    <FooterBar />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue, namespace } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
+import Web3Mixin from '~/mixins/web3';
+import NavBar from '~/components/NavBar.vue';
+import FooterBar from '~/components/FooterBar.vue';
 
-@Component
-export default class DefaultLayout extends Vue {}
+@Component({
+  components: {
+    NavBar,
+    FooterBar
+  }
+})
+export default class DefaultLayout extends mixins(Web3Mixin) {}
 </script>
 <style>
 @font-face {
@@ -66,5 +78,23 @@ html {
 
 .center {
   text-align: center;
+}
+
+.web3-button,
+.refresh-button,
+.barner {
+  background: #12c2e9; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f64f59,
+    #c471ed,
+    #12c2e9
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f64f59,
+    #c471ed,
+    #12c2e9
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 </style>
