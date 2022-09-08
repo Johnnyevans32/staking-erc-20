@@ -28,7 +28,6 @@ export default {
         href: 'https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css'
       }
     ],
-    script: [{ src: 'https://unpkg.com/css-doodle@0.24.3/css-doodle.min.js' }]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -73,10 +72,7 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'http://localhost:8000/api'
-  },
+  axios: {},
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
