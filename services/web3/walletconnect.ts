@@ -5,7 +5,7 @@ export class WalletConnectModule {
   static async setup(): Promise<any> {
     //  Create WalletConnect Provider
     const provider = new WalletConnectProvider({
-      infuraId: '675849285dfa4748868f4a19b72bfb50'
+      infuraId: process.env.INFURA_ID
     });
 
     //  Enable session (triggers QR Code modal)

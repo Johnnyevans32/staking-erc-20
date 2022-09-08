@@ -32,7 +32,11 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['vuesax/dist/vuesax.css', '@/assets/css/main.css', '@fortawesome/fontawesome-svg-core/styles.css'],
+  css: [
+    'vuesax/dist/vuesax.css',
+    '@/assets/css/main.css',
+    '@fortawesome/fontawesome-svg-core/styles.css'
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -49,7 +53,9 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
-
+  privateRuntimeConfig: {
+    INFURA_ID: process.env.INFURA_ID
+  },
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/typescript

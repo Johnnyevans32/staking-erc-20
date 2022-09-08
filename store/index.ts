@@ -3,7 +3,6 @@ import Vuex, { MutationTree, ActionTree } from 'vuex';
 import Web3Module from '~/store/modules/web3';
 import TokenModule from '~/store/modules/token';
 import { RootState } from '~/types/store';
-import UserModule from './modules/user';
 
 const state = () => ({
   refreshAction: false,
@@ -38,7 +37,6 @@ export default () =>
     actions,
     modules: {
       web3: Web3Module,
-      token: TokenModule,
-      user: UserModule
+      token: TokenModule
     }
   });

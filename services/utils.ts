@@ -10,7 +10,7 @@ import { SUPPORTEDNETWORKS } from './constants';
 const POLLING_INTERVAL = 12000;
 const RPC_URL =
   process.env.VUE_APP_RPC_URL ||
-  'https://rinkeby.infura.io/v3/675849285dfa4748868f4a19b72bfb50';
+  `https://rinkeby.infura.io/v3/${process.env.INFURA_ID}`;
 
 export class UtilsModule {
   static intChainId = {

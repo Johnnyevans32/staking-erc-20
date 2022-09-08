@@ -1,5 +1,3 @@
-import { User } from './auth';
-
 export interface Web3Store {
   web3Modal: any;
   web3Provider: any;
@@ -24,12 +22,6 @@ export interface TokenStore {
   setFauToken(address: string): void;
   setDegToken(address: string): void;
   setWethToken(address: string): void;
-}
-
-export interface UserStore {
-  accessToken: string;
-  refreshToken: string;
-  userData: User;
 }
 
 export interface RootState {
