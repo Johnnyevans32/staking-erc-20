@@ -3,7 +3,7 @@ export interface ResponseResult<T> {
   code?: string;
   message: string;
   data: T;
-  meta?: ResponseMetaInfo;
+  metaData?: ResponseMetaInfo;
 }
 
 export interface ResponseMetaInfo {

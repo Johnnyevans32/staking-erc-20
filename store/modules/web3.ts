@@ -10,6 +10,7 @@ import {
 import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators';
 import { Web3Store } from '~/types/store';
 import { STORES, SUPPORTEDNETWORKS } from '~/services/constants';
+import VueMixin from '~/mixins/vue';
 
 @Module({
   // name: STORES.WEB3,
@@ -91,11 +92,6 @@ export default class Web3Module extends VuexModule implements Web3Store {
           this.context.dispatch('handleChainChanging', formattedChainId);
         } catch (err) {
           console.log({ errrfromPro: err });
-          this.context.dispatch(
-            'openOrCloseNotification',
-            { status: true, text: 'network not supported', color: 'danger' },
-            { root: true }
-          );
         }
       });
       provider.on('message', (message: any) => {
@@ -177,7 +173,6 @@ export default class Web3Module extends VuexModule implements Web3Store {
   @Action({ rawError: true })
   public async checkIfNetworkIsNotSupportedAndFail(options: {
     chainId: number;
-    openNotification: boolean;
   }) {
     const { chainId } = options;
     if (!SUPPORTEDNETWORKS.includes(UtilsModule.getNetworkName(chainId))) {
@@ -206,4 +201,3 @@ export default class Web3Module extends VuexModule implements Web3Store {
     return this.web3Provider;
   }
 }
-// type RootState = ReturnType<typeof state>;

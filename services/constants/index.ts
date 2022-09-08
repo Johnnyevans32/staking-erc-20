@@ -21,8 +21,7 @@ export const WALLETPROVIDERS = [
   {
     name: 'Wallet Link',
     id: 'walletlink',
-    logoUrl:
-      'https://lh3.googleusercontent.com/3pwxYyiwivFCYflDJtyWDnJ3ZgYuN_wBQBHqCXbKh9tJTdTL1uOrY1VyxeC_yXLTNZk'
+    logoUrl: 'https://infinitywallet.io/images/coins/chainlink.svg'
   }
 ];
 
@@ -47,3 +46,10 @@ export const POOLACTION = {
   STAKE: 'stake',
   UNSTAKE: 'unstake'
 };
+
+export enum APISTATES {
+  IDLE = 'idle',
+  PENDING = 'pending',
+  REJECTED = 'rejected',
+  RESOLVED = 'resolved'
+}

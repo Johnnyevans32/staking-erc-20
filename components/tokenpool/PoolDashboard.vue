@@ -42,13 +42,14 @@
 <script lang="ts">
 import { Component, Inject, mixins, Prop, Vue } from 'nuxt-property-decorator';
 import Web3Mixin from '~/mixins/web3';
+import VueMixin from '~/mixins/vue';
 import { AsyncComputed } from '~/services/async-computed';
 
 import { UtilsModule } from '~/services/utils';
 import { IPoolContract } from '~/types/services';
 
 @Component
-export default class PoolDashboard extends mixins(Web3Mixin) {
+export default class PoolDashboard extends mixins(Web3Mixin, VueMixin) {
   stakedTotalAssetValue: any = '0';
 
   @AsyncComputed()

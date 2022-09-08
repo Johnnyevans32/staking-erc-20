@@ -1,27 +1,27 @@
 <template>
   <div :class="appTheme">
-    <NavBar />
+    <DefiNavbar />
     <div id="padding-scroll-content">
       <Nuxt />
     </div>
     <FooterBar />
   </div>
 </template>
-
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import Web3Mixin from '~/mixins/web3';
-import NavBar from '~/components/NavBar.vue';
+import VueMixin from '~/mixins/vue';
+import DefiNavbar from '~/components/DefiNavbar.vue';
 import FooterBar from '~/components/FooterBar.vue';
 
 @Component({
   components: {
-    NavBar,
+    DefiNavbar,
     FooterBar
   }
 })
-export default class DefaultLayout extends mixins(Web3Mixin) {}
+export default class DefiLayout extends mixins(VueMixin) {}
 </script>
+
 <style>
 @font-face {
   font-family: 'U8';

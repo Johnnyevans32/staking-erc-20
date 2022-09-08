@@ -13,8 +13,8 @@
 </template>
 <script lang="ts">
 import { Component, mixins, Vue } from 'nuxt-property-decorator';
-import Web3Mixin from '~/mixins/web3';
+import VueMixin from '~/mixins/vue';
 
 @Component
-export default class FooterBar extends mixins(Web3Mixin) {}
+export default class FooterBar extends mixins(VueMixin) {}
 </script>

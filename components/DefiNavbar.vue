@@ -49,7 +49,6 @@
               <v-icon right> mdi-chevron-down </v-icon>
             </vs-button>
             <vs-button
-              upload
               icon
               class="web3-button"
               v-else
@@ -62,29 +61,41 @@
               </template>
             </vs-button>
             <vs-dialog overflow-hidden v-model="walletModalEnable">
-              <template #header>
-                <h4 class="not-margin">Connect your wallet</h4>
-              </template>
-              <div
-                class="wallet-providers"
-                v-for="walletProvider in walletProviders"
-                :key="walletProvider.id"
-              >
-                <vs-button
-                  upload
-                  color="dark"
-                  block
-                  @click="connectWallet(walletProvider.id)"
-                  :disabled="providerWalletConnectionInit"
+              <div class="grid gap-2">
+                <div class="mx-auto mb-2">
+                  <h4 class="not-margin">Connect your wallet</h4>
+                </div>
+                <div
+                  class="wallet-providers"
+                  v-for="walletProvider in walletProviders"
+                  :key="walletProvider.id"
                 >
-                  <v-avatar size="20" class="mr-2">
+                  <!-- <button
+                    class="col-span-2 rounded-md px-5 py-2 w-full text-white bg-black"
+                    @click="connectWallet(walletProvider.id)"
+                    :disabled="providerWalletConnectionInit"
+                  >
                     <img
+                      width="20"
                       :src="walletProvider.logoUrl"
                       alt="wallet-provider-logo"
                     />
-                  </v-avatar>
-                  {{ walletProvider.name }}
-                </vs-button>
+                    {{ walletProvider.name }}
+                  </button> -->
+                  <vs-button
+                    color="dark"
+                    block
+                    @click="connectWallet(walletProvider.id)"
+                    :disabled="providerWalletConnectionInit"
+                  >
+                    <img
+                      width="20"
+                      :src="walletProvider.logoUrl"
+                      alt="wallet-provider-logo"
+                    />
+                    {{ walletProvider.name }}
+                  </vs-button>
+                </div>
               </div>
             </vs-dialog>
           </template>
@@ -149,6 +160,7 @@ import PoolDialog from '~/components/tokenpool/PoolDialog.vue';
 import { Component, mixins } from 'nuxt-property-decorator';
 
 import Web3Mixin from '~/mixins/web3';
+import VueMixin from '~/mixins/vue';
 import { mapActions } from 'vuex';
 import {
   PROVIDERSOPTIONS,
@@ -162,7 +174,7 @@ import {
     PoolDialog
   }
 })
-export default class NavBar extends mixins(Web3Mixin) {
+export default class DefiNavbar extends mixins(Web3Mixin, VueMixin) {
   active: number = 0;
   themeSwitch: boolean = true;
   activeSidebar: boolean = false;
@@ -189,7 +201,6 @@ export default class NavBar extends mixins(Web3Mixin) {
     this.activeSidebar = !this.activeSidebar;
     try {
       await this.resetApp();
-      this.connectionLoaded = false;
     } catch (err) {
       this.openNotification('danger', JSON.stringify(err));
     } finally {

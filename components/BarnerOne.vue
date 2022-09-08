@@ -1,6 +1,6 @@
 <template>
   <div
-    class="barner grid grid-cols-2 gap-4 bg-purple text-white rounded-2xl px-10 py-10 text-4xl"
+    class="barner grid grid-cols-4 gap-4 bg-purple text-dark dark:text-white rounded-2xl px-10 py-10 text-4xl"
   >
     <h1>
       {{ this.title }}<br /><br />

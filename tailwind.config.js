@@ -11,6 +11,9 @@ module.exports = {
     extend: {
       colors: {
         'vuesax-grey': '#1E2023'
+      },
+      boxShadow: {
+        custom: '0 5px 5px 0 #f9ca24'
       }
     },
     fontSize: {

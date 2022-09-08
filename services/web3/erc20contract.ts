@@ -15,7 +15,7 @@ export class ERC20Contract implements IERC20Contract {
 
     const approvetxn = await erc20Crt.approve(spenderAddress, amountInWei);
 
-    await approvetxn.wait(1);
+    await approvetxn.wait();
   }
 
   async getErcTokenBalance(

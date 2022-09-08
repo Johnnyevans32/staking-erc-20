@@ -13,16 +13,13 @@ const RPC_URL =
   'https://rinkeby.infura.io/v3/675849285dfa4748868f4a19b72bfb50';
 
 export class UtilsModule {
-  static intChainId: Record<string, number>;
+  static intChainId = {
+    '0x1': 1,
+    '0x3': 3,
+    '0x4': 4,
+    '0x2a': 42
+  };
 
-  constructor() {
-    UtilsModule.intChainId = {
-      '0x1': 1,
-      '0x3': 3,
-      '0x4': 4,
-      '0x2a': 42
-    };
-  }
   getAxiosErrorResponse(err: any): ResponseResult<any> {
     // err.response is set for axios errors
     if (err.response && err.response.data) {
@@ -133,6 +130,10 @@ export class UtilsModule {
     return ethers.utils.parseEther(value.toString()).toString();
   }
 
+  static formatToEtherValue(value: number): string {
+    return ethers.utils.formatEther(value.toString());
+  }
+
   static nFormatter(num: number, digits: number | undefined) {
     var si = [
       { value: 1, symbol: '' },
@@ -164,6 +165,15 @@ export class UtilsModule {
 
     // Returns a race between our timeout and the passed in promise
     return Promise.race([promise, timeout]);
+  }
+
+  static getAxiosErrorResponse(err: any): ResponseResult<any> {
+    // err.response is set for axios errors
+    if (err.response && err.response.data) {
+      return err.response.data;
+    }
+
+    return { message: err.message, data: undefined };
   }
 
   async sleep(ms: number | undefined) {

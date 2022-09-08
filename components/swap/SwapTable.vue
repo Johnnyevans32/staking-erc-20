@@ -31,7 +31,7 @@
       </div>
 
       <div class="footer-dialog mt-5">
-        <vs-button upload block class="web3-button"> Swap </vs-button>
+        <vs-button block class="web3-button"> Swap </vs-button>
       </div>
     </div>
   </div>

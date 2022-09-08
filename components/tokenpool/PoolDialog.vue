@@ -1,7 +1,6 @@
 <template>
   <div>
     <vs-button
-      upload
       color="dark"
       icon
       animation-type="scale"
@@ -80,7 +79,6 @@
                     v-bind:class="{ hidden: item != POOLACTION.STAKE }"
                   >
                     <vs-button
-                      upload
                       block
                       v-if="item == POOLACTION.STAKE"
                       class="web3-button"
@@ -94,7 +92,6 @@
                     v-bind:class="{ 'col-span-2': item == POOLACTION.UNSTAKE }"
                   >
                     <vs-button
-                      upload
                       block
                       class="web3-button"
                       @click="validateAction"
@@ -149,12 +146,13 @@ import { providers, Signer } from 'ethers';
 import { Component, Prop, mixins, Watch } from 'nuxt-property-decorator';
 
 import Web3Mixin from '~/mixins/web3';
+import VueMixin from '~/mixins/vue';
 import { AsyncComputed } from '~/services/async-computed';
 import { POOLACTION } from '~/services/constants';
 import { UtilsModule } from '~/services/utils';
 
 @Component
-export default class PoolDialog extends mixins(Web3Mixin) {
+export default class PoolDialog extends mixins(Web3Mixin, VueMixin) {
   dialogOne: boolean = false;
   dialogTwo: boolean = false;
   stakeAmount: number = 0;
@@ -235,7 +233,6 @@ export default class PoolDialog extends mixins(Web3Mixin) {
 
   @Watch('stakeAmount')
   stakeAmountValidation(newVal: number) {
-    this.$emit('my-custom-event');
     newVal <= 0 || !newVal
       ? (this.errorMsg = 'invalid amount')
       : newVal > this.tokenBalance && this.activePoolAction === POOLACTION.STAKE

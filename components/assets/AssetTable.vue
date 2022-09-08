@@ -19,7 +19,6 @@
             Tokens
           </vs-th>
           <vs-th> Symbols </vs-th>
-          <vs-th> Img </vs-th>
           <vs-th
             sort
             @click="assetsData = $vs.sortData($event, assetsData, 'pool')"
@@ -36,13 +35,15 @@
           :data="tr"
         >
           <vs-td>
-            {{ tr.name }}
+            <div class="flex gap-2">
+              <img width="15" :src="`${tr.logo}`" />
+              <p>
+                {{ tr.name }}
+              </p>
+            </div>
           </vs-td>
           <vs-td>
             {{ tr.symbol }}
-          </vs-td>
-          <vs-td>
-            <img width="15" :src="`${tr.logo}`" />
           </vs-td>
           <vs-td>
             {{ tr.pool }}

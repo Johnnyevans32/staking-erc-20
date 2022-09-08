@@ -21,5 +21,9 @@ import Web3Mixin from '~/mixins/web3';
     SwapTable
   }
 })
-export default class SwapPage extends mixins(Web3Mixin) {}
+export default class SwapPage extends mixins(Web3Mixin) {
+  layout() {
+    return 'defi';
+  }
+}
 </script>

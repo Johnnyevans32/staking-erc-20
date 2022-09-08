@@ -1,9 +1,7 @@
-import colors from 'vuetify/es5/util/colors';
-
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - defi-app',
+    titleTemplate: 'defi-app',
     title: 'defi-app',
     meta: [
       { charset: 'utf-8' },
@@ -15,37 +13,36 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap'
+        href: 'https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap'
       },
       {
         rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;500&display=swap'
+        href: 'https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;500&display=swap'
       },
       {
         rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap'
+        href: 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap'
       },
       {
         rel: 'stylesheet',
-        href:
-          'https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css'
+        href: 'https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css'
       }
     ],
     script: [{ src: 'https://unpkg.com/css-doodle@0.24.3/css-doodle.min.js' }]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['vuesax/dist/vuesax.css', '@/assets/css/main.css'],
+  css: ['vuesax/dist/vuesax.css', '@/assets/css/main.css', '@fortawesome/fontawesome-svg-core/styles.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/vuesax',
-    '~/plugins/utils',
+    // '~/plugins/utils',
     '~/plugins/vue-async-comp',
-    '~/plugins/axios'
+    '~/plugins/axios',
+    '~/plugins/bottom-navbar',
+    '~/plugins/axios-accessor',
+    '~/plugins/font-awesome'
     // '~/plugins/web3'
     // { src: '~/plugins/vue-css-doodle', mode: 'client' }
   ],
@@ -57,8 +54,6 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
-    // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify',
     '@nuxt/postcss8',
     'nuxt-typed-vuex'
   ],
@@ -74,32 +69,13 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    baseURL: 'http://localhost:8000/api'
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
       lang: 'en'
-    }
-  },
-
-  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
-  vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-    theme: {
-      dark: true,
-      themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
-      }
     }
   },
 

@@ -1,15 +1,21 @@
 <template>
   <div
-    class="grid grid-cols-3 gap-4 h-screen dark:bg-vuesax-grey dark:text-white"
+    class="grid grid-cols-4 md:grid-cols-8 h-screen dark:bg-vuesax-grey dark:text-white"
   >
-    <div class="col-span-3">
-      <div class="container mx-auto hidden md:block">
-        <BarnerOne title="Stake and Unstake assets" />
-      </div>
-      <div class="container mx-auto">
-        <PoolDashboard />
-      </div>
-      <div class="container mx-auto"><AssetTable /></div>
+    <div
+      class="col-span-4 my-auto md:col-start-2 md:col-span-6 hidden md:block"
+    >
+      <BarnerOne title="Stake and Unstake assets" />
+    </div>
+    <div
+      class="col-span-4 my-auto md:col-start-2 md:col-span-6 hidden md:block"
+    >
+      <PoolDashboard />
+    </div>
+    <div
+      class="container col-span-4 my-auto md:col-start-2 md:col-span-6 hidden md:block"
+    >
+      <AssetTable />
     </div>
   </div>
 </template>
@@ -29,5 +35,9 @@ import Web3Mixin from '~/mixins/web3';
     PoolDashboard
   }
 })
-export default class HomePage extends mixins(Web3Mixin) {}
+export default class HomePage extends mixins(Web3Mixin) {
+  layout() {
+    return 'defi';
+  }
+}
 </script>

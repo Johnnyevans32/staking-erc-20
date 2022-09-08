@@ -1,3 +1,5 @@
+import { User } from './auth';
+
 export interface Web3Store {
   web3Modal: any;
   web3Provider: any;
@@ -24,12 +26,14 @@ export interface TokenStore {
   setWethToken(address: string): void;
 }
 
+export interface UserStore {
+  accessToken: string;
+  refreshToken: string;
+  userData: User;
+}
+
 export interface RootState {
   refreshAction: boolean;
-  storeNoticationObj: {
-    text: string;
-    color: string;
-    status: boolean;
-  };
+
   appTheme: string;
 }

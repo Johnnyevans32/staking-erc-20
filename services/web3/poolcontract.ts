@@ -1,4 +1,3 @@
-import WalletConnectProvider from '@walletconnect/web3-provider';
 import { providers, Signer } from 'ethers';
 import { injectable } from 'inversify-props';
 import { IPoolContract } from '~/types/services';
@@ -17,7 +16,7 @@ export class PoolContract implements IPoolContract {
       amountInWei,
       assetAddress
     );
-    await stakeTransaction.wait(1);
+    await stakeTransaction.wait();
   }
 
   async unstakeAsset(
@@ -30,7 +29,7 @@ export class PoolContract implements IPoolContract {
     const stakeTransaction = await tokenFarmContract.unstakeTokens(
       assetAddress
     );
-    await stakeTransaction.wait(1);
+    await stakeTransaction.wait();
   }
 
   async getStakedBalance(

@@ -22,7 +22,7 @@
     "**/*.ts",
     "**/*.tsx",
     "mixins/web3.ts",
-    "typings/index.d.ts",
+    "index.d.ts",
     "plugins/vuex.js"
   ],
   "exclude": ["node_modules", ".nuxt", "dist"]
