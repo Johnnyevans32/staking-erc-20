@@ -29,13 +29,13 @@ export const PROVIDERSOPTIONS = {
   walletconnect: {
     package: WalletConnectProvider,
     options: {
-      infuraId: '675849285dfa4748868f4a19b72bfb50' // https://mainnet.infura.io/v3/
+      infuraId: process.env.INFURA_ID
     }
   },
   walletlink: {
     package: WalletLink,
     options: {
-      infuraId: '675849285dfa4748868f4a19b72bfb50' // https://mainnet.infura.io/v3/
+      infuraId: process.env.INFURA_ID
     }
   }
 };
