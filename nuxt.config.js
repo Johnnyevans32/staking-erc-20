@@ -80,7 +80,7 @@ export default {
       lang: 'en'
     }
   },
-
+  target: 'static',
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [/typed-vuex/],
