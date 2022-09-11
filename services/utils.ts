@@ -3,14 +3,14 @@ import web3 from 'web3';
 import { ERC20, FARM_CONTRACT } from '~/services/constants/asset-info';
 import { ResponseResult } from '~/types';
 import { ITokenCrt } from '~/types/chain';
-import { SUPPORTEDNETWORKS } from './constants';
+import { INFURA_ID, SUPPORTEDNETWORKS } from './constants';
 
 // import store from '~/store';
 
 const POLLING_INTERVAL = 12000;
 const RPC_URL =
   process.env.VUE_APP_RPC_URL ||
-  `https://rinkeby.infura.io/v3/${process.env.INFURA_ID}`;
+  `https://rinkeby.infura.io/v3/${INFURA_ID}`;
 
 export class UtilsModule {
   static intChainId = {

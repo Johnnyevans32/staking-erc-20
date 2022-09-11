@@ -25,17 +25,19 @@ export const WALLETPROVIDERS = [
   }
 ];
 
+export const INFURA_ID = "675849285dfa4748868f4a19b72bfb50";
+
 export const PROVIDERSOPTIONS = {
   walletconnect: {
     package: WalletConnectProvider,
     options: {
-      infuraId: process.env.INFURA_ID
+      infuraId: INFURA_ID
     }
   },
   walletlink: {
     package: WalletLink,
     options: {
-      infuraId: process.env.INFURA_ID
+      infuraId: INFURA_ID
     }
   }
 };
