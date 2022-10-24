@@ -37,7 +37,7 @@
     "nuxt-typed-vuex": "^0.2.0",
     "postcss": "^8.4.5",
     "reflect-metadata": "^0.1.13",
-    "tailwindcss": "^3.0.8",
+    "tailwindcss": "^3.2.1",
     "vue": "^2.6.14",
     "vue-async-computed": "^3.9.0",
     "vue-server-renderer": "^2.6.14",
