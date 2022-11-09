@@ -1574,10 +1574,10 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "6.1.1"
 
-"@fortawesome/vue-fontawesome@^2.0.7":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@fortawesome/vue-fontawesome/-/vue-fontawesome-2.0.7.tgz#44bdc9f9cfab136c42682ed42dac86697e919140"
-  integrity sha512-D1a5FJQeiCFG5a29Re5uNAUAI8SdkCPZlvf0EyfEy9XBVB7tEsL/tfXO6ToXoEOE8CAzJCwuM/PXSCHusXT5/Q==
+"@fortawesome/vue-fontawesome@^2.0.9":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@fortawesome/vue-fontawesome/-/vue-fontawesome-2.0.9.tgz#7df35818135be54fd87568f16ec7b998a3d0cce8"
+  integrity sha512-tUmO92PFHbLOplitjHNBVGMJm6S57vp16tBXJVPKSI/6CfjrgLycqKxEpC6f7qsOqUdoXs5nIv4HLUfrOMHzuw==
 
 "@gar/promisify@^1.0.1":
   version "1.1.2"
