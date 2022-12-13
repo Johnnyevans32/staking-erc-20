@@ -1603,6 +1603,11 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
+"@iconify/types@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@iconify/types/-/types-2.0.0.tgz#ab0e9ea681d6c8a1214f30cd741fe3a20cc57f57"
+  integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
+
 "@iconify/vue2@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@iconify/vue2/-/vue2-1.1.1.tgz#1e7f180f8e1cf6d33f7800d2df64a0629699f8b4"
@@ -1610,12 +1615,12 @@
   dependencies:
     cross-fetch "^3.1.4"
 
-"@iconify/vue@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@iconify/vue/-/vue-3.1.1.tgz#3516b320680756cc9c38b49438af5a315619dca9"
-  integrity sha512-lpRis4y8XHx0LQG1pbD71BuDlYKzCG3xKNsTs6svajQQe1DgkBbt1PEERnJTnmo9UzihTR0Bq7OwPQt7zR25RQ==
+"@iconify/vue@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@iconify/vue/-/vue-4.0.2.tgz#1df557cc82a454cb2d1eb69ded1fb48b6363ef87"
+  integrity sha512-LRp+mYh8N0bcX4lustHtI5o1aEoio9HN3/19uIzVOvI78qopKBjzsDK5hkEZYDSc6+LKG8hfLxTxpW8CejXGZg==
   dependencies:
-    cross-fetch "^3.1.4"
+    "@iconify/types" "^2.0.0"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
